@@ -1,0 +1,51 @@
+2) What problems / warnings are there with code?
+
+
+Failed to execute 'createElement' on 'Document': The tag name provided ('/static/media/Listcode.69b19224b95310e64768') is not a valid name.
+    at createElement (http://localhost:3000/static/js/bundle.js:16723:38)
+    at createInstance (http://localhost:3000/static/js/bundle.js:17712:24)
+    at completeWork (http://localhost:3000/static/js/bundle.js:27332:32)
+    at completeUnitOfWork (http://localhost:3000/static/js/bundle.js:31094:20)
+    at performUnitOfWork (http://localhost:3000/static/js/bundle.js:31070:9)
+    at workLoopSync (http://localhost:3000/static/js/bundle.js:30984:9)
+    at renderRootSync (http://localhost:3000/static/js/bundle.js:30957:11)
+    at recoverFromConcurrentError (http://localhost:3000/static/js/bundle.js:30449:24)
+    at performSyncWorkOnRoot (http://localhost:3000/static/js/bundle.js:30658:24)
+    at flushSyncCallbacks (http://localhost:3000/static/js/bundle.js:18679:26)
+
+
+these are the warnings displayed while developing this code
+
+The handleClick function shoul be defined like this in Single List item 
+
+{
+  const handleClick = () => {
+    onClickHandler(index);
+  };
+
+
+The useState hook in WrappedListComponent is not being used correctly. It should be used like this:
+
+const [selectedIndex, setSelectedIndex] = useState(null);
+
+
+The isSelected prop passed to SingleListItem is not being set correctly. 
+It should be set like this:
+isSelected={selectedIndex === index}
+
+
+
+The PropTypes.array() method is not being used correctly to define the items prop. 
+It should be used like this:
+items: PropTypes.arrayOf(PropTypes.shape({
+  text: PropTypes.string.isRequired,
+})),
+
+
+
+
+
+
+
+
+
